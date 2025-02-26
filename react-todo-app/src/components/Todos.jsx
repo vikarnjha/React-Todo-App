@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 
 const Todos = () => {
   const [input, setInput] = useState("");
@@ -19,7 +19,21 @@ const Todos = () => {
   };
   const deleteTodo = (index) => {
     setTodos(todos.filter((e, i) => i !== index));
-  }
+  };
+  const updateTodo = (index) => {
+    let updatedTodo = prompt("Update the Todo", todos[index]);
+    if (updatedTodo !== null && updatedTodo.trim() !== "") {
+      setTodos(
+        todos.map((todo, i) => {
+          if (i === index) {
+            return updatedTodo;
+          }
+          return todo;
+        })
+      );
+    }
+  };
+
   return (
     <div className="container">
       <div className="inputTask">
@@ -39,12 +53,10 @@ const Todos = () => {
       {todos.map((todo, index) => (
         <div key={index} className="todo">
           {todo} &nbsp;
+          <FontAwesomeIcon onClick={() =>updateTodo(index)} icon={faPenToSquare} /> &nbsp;
           <FontAwesomeIcon
-            // onClick={() => setTodos(todos.filter((e, i) => i !== index))}
             onClick={() => deleteTodo(index)}
-            className="trash"
-            icon={faTrash}
-          />
+            icon={faTrash}/>
         </div>
       ))}
     </div>
