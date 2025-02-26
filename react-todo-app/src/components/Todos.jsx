@@ -55,11 +55,14 @@ const Todos = () => {
       </div>
       {todos.map((todo, index) => (
         <div key={index} className="todo">
-          {todo} &nbsp;
-          <FontAwesomeIcon onClick={() =>updateTodo(index)} icon={faPenToSquare} /> &nbsp;
-          <FontAwesomeIcon
-            onClick={() => deleteTodo(index)}
-            icon={faTrash}/>
+          {todo}
+          <div className="todo-icons">
+            <FontAwesomeIcon
+              onClick={() => updateTodo(index)}
+              icon={faPenToSquare}
+            />
+            <FontAwesomeIcon onClick={() => deleteTodo(index)} icon={faTrash} />
+          </div>
         </div>
       ))}
     </div>
