@@ -11,6 +11,9 @@ const Todos = () => {
   };
   const getInputData = () => {
     // console.log(input)
+    if (input.trim() === "") {
+      return;
+    }
     let store = [...todos, input];
     setTodos(store);
     // setTodos(...todos, input)
