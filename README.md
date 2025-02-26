@@ -11,3 +11,5 @@ Data persistence using local storage
 Frontend: React, Tailwind CSS
 State Management: useState, useEffect
 Storage: Local Storage
+
+# Completed Successfully
