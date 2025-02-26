@@ -61,12 +61,14 @@ function Todos() {
           }}
         />
         <button onClick={getInputData}>Add</button>
-        <FontAwesomeIcon
-          className="deleteAll"
+        <span
           onClick={deleteAll}
-          icon={faEraser}
+          className="deleteAll"
           title="Delete all items"
-        />
+        >
+          Delete All &nbsp;
+          <FontAwesomeIcon icon={faEraser} />
+        </span>
       </div>
       {todos.map((todo, index) => (
         <div key={index} className="todo">
