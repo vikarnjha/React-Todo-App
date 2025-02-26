@@ -5,11 +5,16 @@ import {
   faPenToSquare,
   faEraser,
 } from "@fortawesome/free-solid-svg-icons";
+// Below is the react tostify import
+import { ToastContainer, toast } from "react-toastify";
 // import "tailwindcss";
 
 function Todos() {
   const [input, setInput] = useState("");
   const [todos, setTodos] = useState([]);
+  const deleteAllItems = () => toast("Deleted all todos!");
+  const addATodo = () => toast("Todo added!");
+  const deleteATodo = () => toast("Todo deleted!");
   const getInput = (e) => {
     setInput(e.target.value);
     // console.log("Inputed text :- ", setInput)
@@ -23,13 +28,19 @@ function Todos() {
     setTodos(store);
     // setTodos(...todos, input)
     setInput("");
+    addATodo();
     // console.log(todos)
   };
   const deleteTodo = (index) => {
     setTodos(todos.filter((e, i) => i !== index));
+    deleteATodo();
   };
   const deleteAll = () => {
+    if (todos.length === 0) {
+      return;
+    }
     setTodos([]);
+    deleteAllItems();
   };
   const updateTodo = (index) => {
     let updatedTodo = prompt("Update the Todo", todos[index]);
@@ -60,11 +71,14 @@ function Todos() {
             }
           }}
         />
-        <button onClick={getInputData}>Add</button>
+        <button onClick={() => {
+          getInputData();
+        }}>Add</button>
         <span
-          onClick={deleteAll}
+          onClick={() => {
+            deleteAll();
+          }}
           className="deleteAll"
-          title="Delete all items"
         >
           Delete All &nbsp;
           <FontAwesomeIcon icon={faEraser} />
@@ -82,6 +96,7 @@ function Todos() {
           </div>
         </div>
       ))}
+      <ToastContainer />
     </div>
   );
 }
