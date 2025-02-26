@@ -25,12 +25,19 @@ const Todos = () => {
           placeholder="Add todo..."
           value={input}
           onChange={getInput}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              getInputData();
+            }
+          }}
+
         />
         <button onClick={getInputData}>Add</button>
       </div>
       {todos.map((todo, index) => (
         <div key={index} className="todo">
-          {todo} <FontAwesomeIcon icon={faTrash} />
+          {todo} &nbsp;
+          <FontAwesomeIcon icon={faTrash} />
         </div>
       ))}
     </div>
