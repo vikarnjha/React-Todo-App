@@ -100,3 +100,17 @@
   gap: 15px; /* Space between icons */
   margin-left: auto; /* Pushes icons to the right */
 }
+.deleteAll {
+  background-color: #fff;
+  color: #dc3545;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+}
+.deleteAll:hover {
+  background-color: #f8f9fa;
+  color: #c82333;
+}

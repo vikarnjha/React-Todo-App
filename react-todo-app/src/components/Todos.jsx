@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faPenToSquare, faEraser } from "@fortawesome/free-solid-svg-icons";
 
 const Todos = () => {
   const [input, setInput] = useState("");
@@ -22,6 +22,9 @@ const Todos = () => {
   };
   const deleteTodo = (index) => {
     setTodos(todos.filter((e, i) => i !== index));
+  };
+  const deleteAll = () => {
+    setTodos([]);
   };
   const updateTodo = (index) => {
     let updatedTodo = prompt("Update the Todo", todos[index]);
@@ -52,6 +55,9 @@ const Todos = () => {
           }}
         />
         <button onClick={getInputData}>Add</button>
+        <FontAwesomeIcon className="deleteAll" onClick={deleteAll} icon={faEraser} 
+        title="Delete all items"
+        />
       </div>
       {todos.map((todo, index) => (
         <div key={index} className="todo">
