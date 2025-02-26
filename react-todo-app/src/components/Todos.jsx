@@ -30,14 +30,17 @@ const Todos = () => {
               getInputData();
             }
           }}
-
         />
         <button onClick={getInputData}>Add</button>
       </div>
       {todos.map((todo, index) => (
         <div key={index} className="todo">
           {todo} &nbsp;
-          <FontAwesomeIcon icon={faTrash} />
+          <FontAwesomeIcon
+            onClick={() => setTodos(todos.filter((e, i) => i !== index))}
+            className="trash"
+            icon={faTrash}
+          />
         </div>
       ))}
     </div>
