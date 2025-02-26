@@ -17,6 +17,9 @@ const Todos = () => {
     setInput("");
     // console.log(todos)
   };
+  const deleteTodo = (index) => {
+    setTodos(todos.filter((e, i) => i !== index));
+  }
   return (
     <div className="container">
       <div className="inputTask">
@@ -37,7 +40,8 @@ const Todos = () => {
         <div key={index} className="todo">
           {todo} &nbsp;
           <FontAwesomeIcon
-            onClick={() => setTodos(todos.filter((e, i) => i !== index))}
+            // onClick={() => setTodos(todos.filter((e, i) => i !== index))}
+            onClick={() => deleteTodo(index)}
             className="trash"
             icon={faTrash}
           />
