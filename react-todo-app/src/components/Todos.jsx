@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPenToSquare, faEraser } from "@fortawesome/free-solid-svg-icons";
+// import "tailwindcss";
 
-const Todos = () => {
+function Todos() {
   const [input, setInput] = useState("");
   const [todos, setTodos] = useState([]);
   const getInput = (e) => {
@@ -52,27 +53,27 @@ const Todos = () => {
             if (e.key === "Enter") {
               getInputData();
             }
-          }}
-        />
+          } } />
         <button onClick={getInputData}>Add</button>
-        <FontAwesomeIcon className="deleteAll" onClick={deleteAll} icon={faEraser} 
-        title="Delete all items"
-        />
+        <FontAwesomeIcon className="deleteAll" onClick={deleteAll} icon={faEraser}
+          title="Delete all items" />
       </div>
+      <h1 className="text-3xl font-bold underline">
+    Hello world!
+  </h1>
       {todos.map((todo, index) => (
         <div key={index} className="todo">
           {todo}
           <div className="todo-icons">
             <FontAwesomeIcon
               onClick={() => updateTodo(index)}
-              icon={faPenToSquare}
-            />
+              icon={faPenToSquare} />
             <FontAwesomeIcon onClick={() => deleteTodo(index)} icon={faTrash} />
           </div>
         </div>
       ))}
     </div>
   );
-};
+}
 
 export default Todos;
